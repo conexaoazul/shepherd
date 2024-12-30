@@ -73,9 +73,9 @@
                 <field name="name"/>
                 <field name="tour_id"/>
                 <field name="element"/>
-                <group expand="0" string="Group By">
+                <group expand="0" string="Agrupar Por">
                     <filter string="Tour" name="group_tour" context="{'group_by': 'tour_id'}"/>
-                    <filter string="Position" name="group_position" context="{'group_by': 'position'}"/>
+                    <filter string="Posição" name="group_position" context="{'group_by': 'position'}"/>
                 </group>
             </search>
         </field>

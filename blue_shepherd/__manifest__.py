@@ -1,8 +1,8 @@
 {
-    'name': 'Blue Shepherd',
+    'name': 'Assistente de Onboarding',
     'version': '17.0.1.0.0',
-    'category': 'Tools',
-    'summary': 'Create custom onboarding tours in Odoo web interface',
+    'category': 'Ferramentas',
+    'summary': 'Crie tours personalizados de onboarding na interface web do Odoo',
     'sequence': 1,
     'author': 'OpenHands',
     'website': 'https://github.com/shipshapecode/shepherd',
@@ -26,17 +26,17 @@
     'installable': True,
     'auto_install': False,
     'description': '''
-        Blue Shepherd Module for Odoo
-        ============================
-        This module integrates the Shepherd.js library with Odoo to create
-        customizable onboarding tours in the web interface.
+        Módulo Assistente de Onboarding para Odoo
+        ========================================
+        Este módulo integra a biblioteca Shepherd.js com o Odoo para criar
+        tours personalizados de onboarding na interface web.
         
-        Features:
-        ---------
-        * Create and manage custom onboarding tours
-        * Define multiple steps for each tour
-        * Customize step appearance and behavior
-        * Trigger tours based on specific actions or events
-        * Track tour completion status
+        Funcionalidades:
+        ---------------
+        * Crie e gerencie tours personalizados de onboarding
+        * Defina múltiplos passos para cada tour
+        * Personalize a aparência e comportamento dos passos
+        * Acione tours baseados em ações ou eventos específicos
+        * Acompanhe o status de conclusão dos tours
     ''',
 }

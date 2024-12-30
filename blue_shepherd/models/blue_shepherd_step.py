@@ -2,11 +2,11 @@ from odoo import api, fields, models
 
 class BlueShepherdStep(models.Model):
     _name = 'blue.shepherd.step'
-    _description = 'Tour Step'
+    _description = 'Passo do Tour'
     _order = 'sequence, id'
 
-    name = fields.Char(required=True, translate=True)
-    sequence = fields.Integer(default=10)
+    name = fields.Char('Nome', required=True, translate=True)
+    sequence = fields.Integer('Sequência', default=10)
     tour_id = fields.Many2one(
         'blue.shepherd.tour',
         string='Tour',
@@ -15,65 +15,65 @@ class BlueShepherdStep(models.Model):
     )
     
     # Step content
-    title = fields.Char(translate=True)
-    text = fields.Html(translate=True)
+    title = fields.Char('Título', translate=True)
+    text = fields.Html('Conteúdo', translate=True)
     
     # Step positioning
     element = fields.Char(
-        string='Target Element',
-        help='CSS selector for the element to attach the step to'
+        string='Elemento Alvo',
+        help='Seletor CSS para o elemento ao qual o passo será anexado'
     )
     position = fields.Selection([
-        ('auto', 'Auto'),
-        ('top', 'Top'),
-        ('top-start', 'Top Start'),
-        ('top-end', 'Top End'),
-        ('bottom', 'Bottom'),
-        ('bottom-start', 'Bottom Start'),
-        ('bottom-end', 'Bottom End'),
-        ('right', 'Right'),
-        ('right-start', 'Right Start'),
-        ('right-end', 'Right End'),
-        ('left', 'Left'),
-        ('left-start', 'Left Start'),
-        ('left-end', 'Left End'),
-    ], default='auto', required=True)
+        ('auto', 'Automático'),
+        ('top', 'Topo'),
+        ('top-start', 'Topo Início'),
+        ('top-end', 'Topo Fim'),
+        ('bottom', 'Base'),
+        ('bottom-start', 'Base Início'),
+        ('bottom-end', 'Base Fim'),
+        ('right', 'Direita'),
+        ('right-start', 'Direita Início'),
+        ('right-end', 'Direita Fim'),
+        ('left', 'Esquerda'),
+        ('left-start', 'Esquerda Início'),
+        ('left-end', 'Esquerda Fim'),
+    ], string='Posição', default='auto', required=True)
     
     # Step behavior
     scrollTo = fields.Boolean(
-        string='Scroll to Element',
+        string='Rolar até o Elemento',
         default=True,
-        help='Automatically scroll to the element'
+        help='Rola automaticamente até o elemento'
     )
     modalOverlayOpeningPadding = fields.Integer(
-        string='Overlay Padding',
+        string='Padding do Overlay',
         default=0,
-        help='Padding between the element and overlay highlight'
+        help='Espaçamento entre o elemento e o destaque do overlay'
     )
     
     # Buttons configuration
     show_cancel_link = fields.Boolean(
-        string='Show Cancel Button',
+        string='Mostrar Botão Cancelar',
         default=True
     )
     cancel_text = fields.Char(
-        string='Cancel Button Text',
-        default='Skip',
+        string='Texto do Botão Cancelar',
+        default='Pular',
         translate=True
     )
     next_text = fields.Char(
-        string='Next Button Text',
-        default='Next',
+        string='Texto do Botão Próximo',
+        default='Próximo',
         translate=True
     )
     back_text = fields.Char(
-        string='Back Button Text',
-        default='Back',
+        string='Texto do Botão Voltar',
+        default='Voltar',
         translate=True
     )
     
     # Advanced options
     extra_options = fields.Text(
-        string='Extra Options',
-        help='Additional JSON configuration for this step'
+        string='Opções Extras',
+        help='Configuração JSON adicional para este passo'
     )

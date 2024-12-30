@@ -79,9 +79,9 @@
             <search>
                 <field name="name"/>
                 <field name="description"/>
-                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Trigger Type" name="group_trigger" context="{'group_by': 'trigger_on'}"/>
+                <filter string="Arquivado" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Agrupar Por">
+                    <filter string="Tipo de Acionamento" name="group_trigger" context="{'group_by': 'trigger_on'}"/>
                 </group>
             </search>
         </field>

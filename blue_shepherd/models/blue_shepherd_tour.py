@@ -2,42 +2,43 @@ from odoo import api, fields, models
 
 class BlueShepherdTour(models.Model):
     _name = 'blue.shepherd.tour'
-    _description = 'Onboarding Tour'
+    _description = 'Tour de Onboarding'
     _order = 'sequence, id'
 
-    name = fields.Char(required=True, translate=True)
-    description = fields.Text(translate=True)
-    sequence = fields.Integer(default=10)
-    active = fields.Boolean(default=True)
+    name = fields.Char('Nome', required=True, translate=True)
+    description = fields.Text('Descrição', translate=True)
+    sequence = fields.Integer('Sequência', default=10)
+    active = fields.Boolean('Ativo', default=True)
     
     # Tour configuration
     modal_overlay = fields.Boolean(
-        string='Show Modal Overlay',
+        string='Mostrar Overlay Modal',
         default=True,
-        help='Show a dark overlay behind the shepherd elements'
+        help='Mostra um overlay escuro atrás dos elementos do tour'
     )
     default_step_options = fields.Text(
-        string='Default Step Options',
-        help='JSON configuration for default step options'
+        string='Opções Padrão dos Passos',
+        help='Configuração JSON para opções padrão dos passos'
     )
     exit_on_escape = fields.Boolean(
-        string='Exit on Escape',
+        string='Sair com ESC',
         default=True,
-        help='Allow closing the tour with ESC key'
+        help='Permite fechar o tour com a tecla ESC'
     )
     keyboard_navigation = fields.Boolean(
-        string='Keyboard Navigation',
+        string='Navegação por Teclado',
         default=True,
-        help='Allow navigation with arrow keys'
+        help='Permite navegação com as teclas de seta'
     )
     
     # Steps relationship
     step_ids = fields.One2many(
         'blue.shepherd.step',
         'tour_id',
-        string='Tour Steps'
+        string='Passos do Tour'
     )
     step_count = fields.Integer(
+        string='Quantidade de Passos',
         compute='_compute_step_count',
         store=True
     )
@@ -45,21 +46,21 @@ class BlueShepherdTour(models.Model):
     # Trigger configuration
     trigger_on = fields.Selection([
         ('manual', 'Manual'),
-        ('page_load', 'Page Load'),
-        ('element_present', 'Element Present'),
-        ('action', 'After Action')
-    ], default='manual', required=True)
+        ('page_load', 'Carregamento da Página'),
+        ('element_present', 'Elemento Presente'),
+        ('action', 'Após Ação')
+    ], string='Acionar Em', default='manual', required=True)
     trigger_page = fields.Char(
-        string='Trigger Page',
-        help='URL path that triggers the tour'
+        string='Página de Acionamento',
+        help='Caminho URL que aciona o tour'
     )
     trigger_element = fields.Char(
-        string='Trigger Element',
-        help='CSS selector for the element that triggers the tour'
+        string='Elemento de Acionamento',
+        help='Seletor CSS para o elemento que aciona o tour'
     )
     trigger_action_id = fields.Many2one(
         'ir.actions.actions',
-        string='Trigger Action'
+        string='Ação de Acionamento'
     )
     
     @api.depends('step_ids')
