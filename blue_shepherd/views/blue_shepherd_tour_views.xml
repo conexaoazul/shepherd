@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_blue_shepherd_tour_tree" model="ir.ui.view">
+        <field name="name">blue.shepherd.tour.tree</field>
+        <field name="model">blue.shepherd.tour</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="trigger_on"/>
+                <field name="step_count"/>
+                <field name="active" widget="boolean_toggle"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_blue_shepherd_tour_form" model="ir.ui.view">
+        <field name="name">blue.shepherd.tour.form</field>
+        <field name="model">blue.shepherd.tour</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <widget name="web_ribbon" title="Archived" bg_color="bg-danger" invisible="active"/>
+                        <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                            <field name="active" widget="boolean_button"/>
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Tour Name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="description"/>
+                            <field name="sequence"/>
+                        </group>
+                        <group>
+                            <field name="modal_overlay"/>
+                            <field name="exit_on_escape"/>
+                            <field name="keyboard_navigation"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Steps" name="steps">
+                            <field name="step_ids">
+                                <tree>
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="name"/>
+                                    <field name="element"/>
+                                    <field name="position"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Trigger Configuration" name="trigger">
+                            <group>
+                                <field name="trigger_on"/>
+                                <field name="trigger_page" attrs="{'invisible': [('trigger_on', '!=', 'page_load')]}"/>
+                                <field name="trigger_element" attrs="{'invisible': [('trigger_on', '!=', 'element_present')]}"/>
+                                <field name="trigger_action_id" attrs="{'invisible': [('trigger_on', '!=', 'action')]}"/>
+                            </group>
+                        </page>
+                        <page string="Advanced" name="advanced">
+                            <group>
+                                <field name="default_step_options"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_blue_shepherd_tour_search" model="ir.ui.view">
+        <field name="name">blue.shepherd.tour.search</field>
+        <field name="model">blue.shepherd.tour</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description"/>
+                <filter string="Archived" name="inactive" domain="[('active', '=', False)]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Trigger Type" name="group_trigger" context="{'group_by': 'trigger_on'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+</odoo>

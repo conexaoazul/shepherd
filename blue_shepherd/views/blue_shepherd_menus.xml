@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Actions -->
+    <record id="action_blue_shepherd_tour" model="ir.actions.act_window">
+        <field name="name">Onboarding Tours</field>
+        <field name="res_model">blue.shepherd.tour</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first onboarding tour!
+            </p>
+            <p>
+                Create guided tours to help users navigate through your application.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_blue_shepherd_step" model="ir.actions.act_window">
+        <field name="name">Tour Steps</field>
+        <field name="res_model">blue.shepherd.step</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_group_tour': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first tour step!
+            </p>
+            <p>
+                Define the steps that will guide users through your application.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menus -->
+    <menuitem
+        id="menu_blue_shepherd_root"
+        name="Blue Shepherd"
+        sequence="90"
+        web_icon="blue_shepherd,static/description/icon.png"/>
+
+    <menuitem
+        id="menu_blue_shepherd_tour"
+        name="Tours"
+        parent="menu_blue_shepherd_root"
+        action="action_blue_shepherd_tour"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_blue_shepherd_step"
+        name="Steps"
+        parent="menu_blue_shepherd_root"
+        action="action_blue_shepherd_step"
+        sequence="2"/>
+</odoo>

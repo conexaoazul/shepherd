@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="blue_shepherd.TourManager" owl="1">
+        <div class="o_blue_shepherd_tour_manager" t-ref="root"/>
+    </t>
+</templates>
