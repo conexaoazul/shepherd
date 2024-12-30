@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_blue_shepherd_tour_admin,blue.shepherd.tour admin,model_blue_shepherd_tour,base.group_system,1,1,1,1
+access_blue_shepherd_tour_user,blue.shepherd.tour user,model_blue_shepherd_tour,base.group_user,1,0,0,0
+access_blue_shepherd_step_admin,blue.shepherd.step admin,model_blue_shepherd_step,base.group_system,1,1,1,1
+access_blue_shepherd_step_user,blue.shepherd.step user,model_blue_shepherd_step,base.group_user,1,0,0,0

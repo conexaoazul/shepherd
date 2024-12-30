@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Actions -->
+    <record id="action_blue_shepherd_tour" model="ir.actions.act_window">
+        <field name="name">Tours de Onboarding</field>
+        <field name="res_model">blue.shepherd.tour</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crie seu primeiro tour de onboarding!
+            </p>
+            <p>
+                Crie tours guiados para ajudar usuários a navegar pela sua aplicação.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_blue_shepherd_step" model="ir.actions.act_window">
+        <field name="name">Passos do Tour</field>
+        <field name="res_model">blue.shepherd.step</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{'search_default_group_tour': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crie seu primeiro passo do tour!
+            </p>
+            <p>
+                Defina os passos que guiarão os usuários pela sua aplicação.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menus -->
+    <menuitem
+        id="menu_blue_shepherd_root"
+        name="Assistente de Onboarding"
+        sequence="90"
+        web_icon="blue_shepherd,static/description/icon.png"/>
+
+    <menuitem
+        id="menu_blue_shepherd_tour"
+        name="Tours"
+        parent="menu_blue_shepherd_root"
+        action="action_blue_shepherd_tour"
+        sequence="1"/>
+
+    <menuitem
+        id="menu_blue_shepherd_step"
+        name="Passos"
+        parent="menu_blue_shepherd_root"
+        action="action_blue_shepherd_step"
+        sequence="2"/>
+</odoo>
